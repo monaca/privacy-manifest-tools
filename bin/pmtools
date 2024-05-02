@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const tools = require(__dirname + '/../lib/add-privacy-manifest.js');
+
+// const pbxprojPath = 'ios/App/App.xcodeproj/project.pbxproj';
+// const privacyManifestPath = './PrivacyInfo.xcprivacy';
+if (process.argv.length < 4) {
+    console.log('------ Usage ------');
+    console.log("npx pmtools add <privacy-manifest-path> <xcodeproj-path>");
+    console.log("example: ");
+    console.log("npx pmtools add PrivacyInfo.xcprivacy ios/App/App.xcodeproj");
+}
+
+const cmd = process.argv[2];
+
+if (cmd === 'add') {
+    const privacyManifestPath = process.argv[3];
+    const xcodePathPath = process.argv[4];
+    const pbxprojPath = path.join(process.argv[4], 'project.pbxproj');
+    tools.addPrivacyManifest(pbxprojPath, privacyManifestPath);
+}
+
