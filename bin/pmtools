@@ -17,7 +17,7 @@ const cmd = process.argv[2];
 if (cmd === 'add') {
     const privacyManifestPath = process.argv[3];
     const xcodePathPath = process.argv[4];
-    const pbxprojPath = path.join(process.argv[4], 'project.pbxproj');
+    const pbxprojPath = path.join(xcodePathPath, 'project.pbxproj');
     tools.addPrivacyManifest(pbxprojPath, privacyManifestPath);
 }
 
