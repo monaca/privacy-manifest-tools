@@ -11,7 +11,7 @@
   },
   "keywords": [],
   "author": "Asial",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "xcode": "^3.0.1"
   }
