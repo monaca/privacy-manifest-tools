@@ -21,4 +21,11 @@ async function main() {
     }
 }
 
-main();
+(async () => {
+    try {
+        await main();
+        console.log("main function completed");
+    } catch (error) {
+        console.error("Error occurred in main function", error);
+    }
+})();
