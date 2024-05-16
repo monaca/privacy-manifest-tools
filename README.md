@@ -7,6 +7,11 @@ To use the tool, run the following command:
 npx pmtools add <path/to/privacy-manifest> <path/to/app>
 ```
 
+For example
+```
+npm pmtools add PrivacyManifest.xml ios/App
+```
+
 ### Parameters
 
 1. **Privacy Manifest Path:** The first argument is the path to your (new) `PrivacyInfo.xcprivacy` file.
