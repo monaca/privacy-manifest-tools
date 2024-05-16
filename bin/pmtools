@@ -1,22 +1,31 @@
 #!/usr/bin/env node
 
-const path = require('path');
-const tools = require(__dirname + '/../lib/add-privacy-manifest.js');
+async function main() {
+    const tools = require(__dirname + '/../lib/add-privacy-manifest.js');
 
-// const pbxprojPath = 'ios/App/App.xcodeproj/project.pbxproj';
-// const privacyManifestPath = './PrivacyInfo.xcprivacy';
-if (process.argv.length < 4) {
-    console.log('------ Usage ------');
-    console.log("npx pmtools add <path/to/privacy-manifest> <path/to/app>");
-    console.log("example: ");
-    console.log("npx pmtools add PrivacyInfo.xcprivacy ios/App");
+    // const pbxprojPath = 'ios/App/App.xcodeproj/project.pbxproj';
+    // const privacyManifestPath = './PrivacyInfo.xcprivacy';
+    if (process.argv.length < 4) {
+        console.log('------ Usage ------');
+        console.log("npx pmtools add <path/to/privacy-manifest> <path/to/app>");
+        console.log("example: ");
+        console.log("npx pmtools add PrivacyInfo.xcprivacy ios/App");
+    }
+
+    const cmd = process.argv[2];
+
+    if (cmd === 'add') {
+        const privacyManifestPath = process.argv[3];
+        const appPath = process.argv[4];
+        await tools.addPrivacyManifest(appPath, privacyManifestPath);
+    }
 }
 
-const cmd = process.argv[2];
-
-if (cmd === 'add') {
-    const privacyManifestPath = process.argv[3];
-    const appPath = process.argv[4];
-    tools.addPrivacyManifest(appPath, privacyManifestPath);
-}
-
+(async () => {
+    try {
+        await main();
+        console.log("main function completed");
+    } catch (error) {
+        console.error("Error occurred in main function", error);
+    }
+})();
